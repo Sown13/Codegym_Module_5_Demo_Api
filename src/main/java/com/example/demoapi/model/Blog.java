@@ -17,4 +17,5 @@ public class Blog {
     private String blogTextContent;
     @ManyToOne
     private User user;
+
 }
