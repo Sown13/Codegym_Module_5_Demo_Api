@@ -1,6 +1,7 @@
 use demo_api;
 
-insert into user values (default,'Hai Son', 'Nam Dinh','son@gmail.com','0858437557','son94','123'),
+insert into user(user_id, user_full_name, user_address, user_email, user_phone, user_account, user_password)
+                 values (default,'Hai Son', 'Nam Dinh','son@gmail.com','0858437557','son94','123'),
                         (default,'Ngo Hai', 'Thai Binh','hai@gmail.com','0919734568','hai97','123'),
                         (default,'Minh Tuan', 'Thai Binh','mt@gmail.com','0987654321','mt98','123'),
                         (default,'pukadu', 'Ha Dong','dung@gmail.com','123456789','pukadu','123'),
