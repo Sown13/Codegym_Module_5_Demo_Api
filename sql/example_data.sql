@@ -6,7 +6,8 @@ insert into user(user_id, user_full_name, user_address, user_email, user_phone, 
                         (default,'Minh Tuan', 'Thai Binh','mt@gmail.com','0987654321','mt98','123'),
                         (default,'pukadu', 'Ha Dong','dung@gmail.com','123456789','pukadu','123'),
                         (default,'Minh Cong', 'Ha Giang','cong@gmail.com','987654321','cong98','123');
-insert into blog values (default, 'Xa hoi','khong co gi',1),
+insert into blog(blog_id,blog_topic,blog_text_content,user_user_id)
+                    values (default, 'Xa hoi','khong co gi',1),
                         (default, 'Tao lao','khong co gi',1),
                         (default, 'Thoi su','khong co gi',1),
                         (default, 'Xa hoi','chua co gi',2),
