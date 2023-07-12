@@ -13,4 +13,5 @@ public interface IProductRepo extends JpaRepository<Product,Long> {
     Product findProductByUserId(@Param("id") Long userId);
 //    @Query("SELECT Product FROM Product JOIN Cart on Product.productId = Cart.product.productId JOIN User on User.userId = Cart.user.userId WHERE User.userId = :id")
 //    Product findProductByUserId(@Param("id") Long userId);
+
 }
