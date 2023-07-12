@@ -21,7 +21,7 @@ public class UserRestController {
     public ResponseEntity<Iterable<User>> listUser(){
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/api")
+    @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable Long id){
         Optional<User> optionalUser = userService.findById(id);
         if (!optionalUser.isPresent()) {
@@ -29,7 +29,7 @@ public class UserRestController {
         }
         return new ResponseEntity<>(optionalUser.get(),HttpStatus.OK);
     }
-    @PostMapping("/api")
+    @PostMapping("")
     public ResponseEntity<User> createUser(@RequestBody User user){
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
     }
@@ -37,7 +37,7 @@ public class UserRestController {
     public void removeUser(@PathVariable Long id){
         userService.deleteById(id);
     }
-    @PutMapping("/api/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User user){
         Optional<User> optionalUser = userService.findById(id);
         if (!optionalUser.isPresent()) {

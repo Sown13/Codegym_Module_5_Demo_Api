@@ -30,4 +30,9 @@ public class ProductService implements IProductService {
     public void deleteById(Long id) {
         productRepo.deleteById(id);
     }
+
+    @Override
+    public Product findProductByUserId(Long userId) {
+        return productRepo.findProductByUserId(userId);
+    }
 }

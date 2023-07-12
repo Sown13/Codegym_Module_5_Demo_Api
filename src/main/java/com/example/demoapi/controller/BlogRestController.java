@@ -19,7 +19,7 @@ public class BlogRestController {
     public ResponseEntity<Iterable<Blog>> listBlog(){
         return new ResponseEntity<>(blogService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/api")
+    @GetMapping("/{id}")
     public ResponseEntity<Blog> findById(@PathVariable Long id){
         Optional<Blog> optionalBlog = blogService.findById(id);
         if (!optionalBlog.isPresent()) {
@@ -27,7 +27,7 @@ public class BlogRestController {
         }
         return new ResponseEntity<>(optionalBlog.get(),HttpStatus.OK);
     }
-    @PostMapping("/api")
+    @PostMapping("")
     public ResponseEntity<Blog> createBlog(@RequestBody Blog blog){
         return new ResponseEntity<>(blogService.save(blog),HttpStatus.CREATED);
     }
@@ -35,7 +35,7 @@ public class BlogRestController {
     public void remove(@PathVariable Long id){
         blogService.deleteById(id);
     }
-    @PutMapping("/api/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Blog> update(@PathVariable Long id,@RequestBody Blog blog){
         Optional<Blog> optionalBlog = blogService.findById(id);
         if (!optionalBlog.isPresent()) {

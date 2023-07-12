@@ -21,7 +21,7 @@ public class ProductRestController {
     public ResponseEntity<Iterable<Product>> listProduct(){
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/api")
+    @GetMapping("/{id}")
     public ResponseEntity<Product> findProductById(@PathVariable Long id){
         Optional<Product> optionalProduct = productService.findById(id);
         if (!optionalProduct.isPresent()) {
@@ -29,7 +29,11 @@ public class ProductRestController {
         }
         return new ResponseEntity<>(optionalProduct.get(),HttpStatus.OK);
     }
-    @PostMapping("/api")
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Product> findProductByUserId(@PathVariable Long id){
+        return new ResponseEntity<>(productService.findProductByUserId(id), HttpStatus.OK);
+    }
+    @PostMapping("")
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.save(product),HttpStatus.CREATED);
     }
@@ -37,7 +41,7 @@ public class ProductRestController {
     public void removeProduct(@PathVariable Long id){
         productService.deleteById(id);
     }
-    @PutMapping("/api/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id,@RequestBody Product product){
         Optional<Product> optionalProduct = productService.findById(id);
         if (!optionalProduct.isPresent()) {

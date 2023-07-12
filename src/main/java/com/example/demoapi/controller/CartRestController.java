@@ -21,7 +21,7 @@ public class CartRestController {
     public ResponseEntity<Iterable<Cart>> listCart(){
         return new ResponseEntity<>(cartService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/api")
+    @GetMapping("/{id}")
     public ResponseEntity<Cart> findCartById(@PathVariable Long id){
         Optional<Cart> optionalBlog = cartService.findById(id);
         if (!optionalBlog.isPresent()) {
@@ -29,15 +29,15 @@ public class CartRestController {
         }
         return new ResponseEntity<>(optionalBlog.get(),HttpStatus.OK);
     }
-    @PostMapping("/api")
+    @PostMapping("")
     public ResponseEntity<Cart> createCart(@RequestBody Cart cart){
         return new ResponseEntity<>(cartService.save(cart),HttpStatus.CREATED);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("")
     public void removeCart(@PathVariable Long id){
         cartService.deleteById(id);
     }
-    @PutMapping("/api/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Cart> updateCart(@PathVariable Long id,@RequestBody Cart cart){
         Optional<Cart> optionalBlog = cartService.findById(id);
         if (!optionalBlog.isPresent()) {
